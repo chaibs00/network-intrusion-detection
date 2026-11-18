@@ -1,0 +1,10 @@
+{
+  "model": "LogisticRegression",
+  "macro_f1": 0.7945921733881445,
+  "accuracy": 0.771705654385128,
+  "balanced_accuracy": 0.930456345509095,
+  "weighted_f1": 0.8285544363384322,
+  "detection_rate": 0.9717380868684349,
+  "false_alarm_rate": 0.38630195338647844,
+  "train_time_s": 294.3822798728943
+}

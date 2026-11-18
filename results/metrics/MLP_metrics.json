@@ -1,0 +1,10 @@
+{
+  "model": "MLP",
+  "macro_f1": 0.8108085877487116,
+  "accuracy": 0.8067297010726188,
+  "balanced_accuracy": 0.9445112513019148,
+  "weighted_f1": 0.8560097321883524,
+  "detection_rate": 0.9786589860183473,
+  "false_alarm_rate": 0.3304630925576584,
+  "train_time_s": 177.10120129585266
+}

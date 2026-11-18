@@ -1,0 +1,10 @@
+{
+  "model": "SoftVoting",
+  "macro_f1": 0.8915303479752308,
+  "accuracy": 0.8852535564317514,
+  "balanced_accuracy": 0.9607035719215599,
+  "weighted_f1": 0.912190270738415,
+  "detection_rate": 0.9834178129051523,
+  "false_alarm_rate": 0.19350088237083918,
+  "train_time_s": null
+}

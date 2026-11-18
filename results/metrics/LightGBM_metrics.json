@@ -1,0 +1,10 @@
+{
+  "model": "LightGBM",
+  "macro_f1": 0.8573599876739801,
+  "accuracy": 0.8751847962226557,
+  "balanced_accuracy": 0.9596596916975652,
+  "weighted_f1": 0.9052882780881908,
+  "detection_rate": 0.984521528116389,
+  "false_alarm_rate": 0.21257530578713565,
+  "train_time_s": 454.1187629699707
+}

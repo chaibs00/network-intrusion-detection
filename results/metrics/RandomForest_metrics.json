@@ -1,0 +1,10 @@
+{
+  "model": "RandomForest",
+  "macro_f1": 0.8910374053401434,
+  "accuracy": 0.8965832295215442,
+  "balanced_accuracy": 0.9545842638429515,
+  "weighted_f1": 0.9195262399755029,
+  "detection_rate": 0.9798118392355638,
+  "false_alarm_rate": 0.17006937260390678,
+  "train_time_s": 243.69385814666748
+}

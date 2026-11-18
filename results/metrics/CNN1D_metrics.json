@@ -1,0 +1,10 @@
+{
+  "model": "CNN1D",
+  "macro_f1": 0.7973351297862493,
+  "accuracy": 0.8102342971674974,
+  "balanced_accuracy": 0.9339504596468244,
+  "weighted_f1": 0.8580438845620092,
+  "detection_rate": 0.9716473705497031,
+  "false_alarm_rate": 0.31686545366031765,
+  "train_time_s": 82.42010927200317
+}

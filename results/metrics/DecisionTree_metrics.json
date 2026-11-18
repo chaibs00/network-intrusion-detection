@@ -1,0 +1,10 @@
+{
+  "model": "DecisionTree",
+  "macro_f1": 0.8887717655524344,
+  "accuracy": 0.8756399385726399,
+  "balanced_accuracy": 0.943750984996344,
+  "weighted_f1": 0.9051999794635696,
+  "detection_rate": 0.9781146881059567,
+  "false_alarm_rate": 0.20655997079048258,
+  "train_time_s": 35.83930444717407
+}
