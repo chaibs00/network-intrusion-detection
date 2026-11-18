@@ -11,7 +11,7 @@ class_names = load_class_names()
 features = load_features()
 demo = load_demo_flows()
 
-st.title("Analyse a flow")
+st.title("🔍 Analyse a flow")
 st.caption("Pick an unseen test flow and see what the model decides, and why.")
 
 # ---- Pick a flow
@@ -55,7 +55,7 @@ with right:
     st.info(f"Suggested response: {RESPONSE[family(predicted)]}")
 
     st.write("Model output (top 5 classes)")
-    st.bar_chart(pd.Series(proba, index=class_names).sort_values(ascending=False).head(5))
+    st.bar_chart(pd.Series(proba, index=class_names).sort_values(ascending=False).head(5), color="#FF4B4B")
 
 # ---- Why this decision? (SHAP)
 if st.checkbox("Show SHAP explanation"):

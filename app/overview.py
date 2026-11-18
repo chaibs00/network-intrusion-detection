@@ -6,17 +6,25 @@ from common import FIG_DIR, MODEL_NAME, family, load_class_names, load_features,
 class_names = load_class_names()
 features = load_features()
 results = load_results()
+best = results.loc[MODEL_NAME]
 
 # ---- Title and description
-st.title("Network Intrusion Detection")
+st.title("🛡️ Network Intrusion Detection")
 st.caption("Attack type classification · CSE-CIC-IDS2018")
 st.write(
     "A machine learning model reads the statistics of each network flow (one connection between "
     "two machines) and predicts whether it is normal traffic or **which type of attack** it is."
 )
 
+# ---- Key numbers of the model used
+m1, m2, m3, m4 = st.columns(4)
+m1.metric("Macro-F1", f"{best['macro_f1']:.3f}")
+m2.metric("Attacks detected", f"{100 * best['detection_rate']:.1f}%")
+m3.metric("False alarms", f"{100 * best['false_alarm_rate']:.1f}%")
+m4.metric("Attack classes", len(class_names) - 1)
+
 # ---- Classes and features
-st.subheader("What the model recognises")
+st.subheader("🎯 What the model recognises")
 classes = pd.DataFrame({"Class": class_names, "Family": [family(c) for c in class_names]})
 st.dataframe(classes.groupby("Family")["Class"].apply(", ".join))
 
@@ -24,14 +32,19 @@ with st.expander(f"Input: {len(features)} flow features"):
     st.write(", ".join(features))
 
 # ---- Models and their scores
-st.subheader("Models trained (test set)")
+st.subheader("📊 Models trained (test set)")
 table = pd.DataFrame({
     "Macro-F1": results["macro_f1"].round(4),
     "Attacks detected (%)": (100 * results["detection_rate"]).round(1),
     "False alarms (%)": (100 * results["false_alarm_rate"]).round(1),
     "Accuracy": results["accuracy"].round(4),
 })
-st.dataframe(table.sort_values("Macro-F1", ascending=False))
+table = table.sort_values("Macro-F1", ascending=False)
+# Best value of each column in green
+st.dataframe(table.style
+             .highlight_max(subset=["Macro-F1", "Attacks detected (%)", "Accuracy"], color="#1F6F43")
+             .highlight_min(subset=["False alarms (%)"], color="#1F6F43")
+             .format(precision=4))
 
 col1, col2 = st.columns(2)
 for col, name, caption in [(col1, "08_confusion_matrix.png", "Confusion matrix of the best model"),
@@ -40,8 +53,7 @@ for col, name, caption in [(col1, "08_confusion_matrix.png", "Confusion matrix o
         col.image(str(FIG_DIR / name), caption=caption)
 
 # ---- Model picked
-best = results.loc[MODEL_NAME]
-st.subheader("Model picked: Random Forest")
+st.subheader("🏆 Model picked: Random Forest")
 st.markdown(f"""
 - Best single model: macro-F1 **{best['macro_f1']:.3f}** (soft voting is about the same but needs 3 models)
 - Fewest false alarms: **{100 * best['false_alarm_rate']:.1f}%** of normal flows flagged

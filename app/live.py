@@ -11,7 +11,7 @@ class_names = np.array(load_class_names())
 features = load_features()
 demo = load_demo_flows()
 
-st.title("Live traffic simulation")
+st.title("📡 Live traffic simulation")
 st.caption("Unseen flows arrive in batches; the model classifies each batch and raises alerts.")
 
 # ---- Settings
@@ -68,6 +68,6 @@ if start:
             m3.metric("Attacks missed", int(missed))
             m4.metric("False alarms", int(false_alarms))
         log_box.dataframe(pd.DataFrame(log[::-1]), hide_index=True)
-        chart_box.bar_chart(alert_types.sort_values(ascending=False))
+        chart_box.bar_chart(alert_types.sort_values(ascending=False), color="#FF4B4B")
 
         time.sleep(delay)

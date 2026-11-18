@@ -7,10 +7,13 @@ import pandas as pd
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]          # project root
+ASSETS = ROOT / "assets"                            # figures/, models/, results/
 MODEL_NAME = "RandomForest"
-MODEL_PATH = ROOT / "models" / "ML" / f"{MODEL_NAME}.joblib"
-SHARED_DIR = ROOT / "models" / "shared"
-FIG_DIR = ROOT / "figures"
+MODEL_PATH = ASSETS / "models" / "ML" / f"{MODEL_NAME}.joblib"
+SHARED_DIR = ASSETS / "models" / "shared"
+FIG_DIR = ASSETS / "figures"
+RESULTS_PATH = ASSETS / "results" / "final_comparison.csv"
+DEMO_PATH = ROOT / "data" / "demo_flows.parquet"
 
 
 @st.cache_resource
@@ -31,12 +34,12 @@ def load_features():
 
 @st.cache_data
 def load_demo_flows():
-    return pd.read_parquet(ROOT / "data" / "demo_flows.parquet")
+    return pd.read_parquet(DEMO_PATH)
 
 
 @st.cache_data
 def load_results():
-    return pd.read_csv(ROOT / "results" / "final_comparison.csv", index_col=0)
+    return pd.read_csv(RESULTS_PATH, index_col=0)
 
 
 @st.cache_resource
